@@ -38,7 +38,7 @@ class Register extends React.Component {
       dialogType: '',
       dialogMessage: '',
       newItem: "",
-      skillOptions: ["NodeJs", "React", "Angular", "C#", "Java", "Oracle", "SQL Server", "JavaScript", "CSS", "HTML5", "AJAX", "JSON", "Material-UI", "Selenium", "Jest", "Mongo", "Protractor", "Jasmine", "JUnit", "Windows", "Linux" ],
+      skillOptions: ["NodeJs", "React", "Angular", "C#", "Java", "Oracle", "SQL Server", "Git", "JavaScript", "Php", "CSS", "HTML5", "AJAX", "JSON", "Materials", "Selenium", "Jest", "Mongo", "Protractor", "Jasmine", "JUnit", "Windows", "Linux" ],
       firstName: "",
       lastName: "",
       email: "",
@@ -159,7 +159,7 @@ class Register extends React.Component {
           <div class="text-box--1">
             <h1><img src={logo} alt="NCCI"></img>NCCI Hackathon.</h1>
             <p>Presented by the Innovation Group.</p>
-            <p><img src={hackathonLogo} alt="logo" class="hackathon_Logo"></img></p>
+            <p><img src={hackathonLogo} alt="logo" class="hackathon_Logo" style={{height: '100%'}}></img></p>
           </div>
         </div>
         <Grid container justify="center">
@@ -171,7 +171,7 @@ class Register extends React.Component {
                     <Typography variant="h4" color="secondary">Register Now</Typography>
                     <Typography align="left">Enter your first name, last name, and email address. If you have a team enter the name and teammates.</Typography>
                     <Hidden mdDown>
-                      <img src={HackImg} alt="Hack Class" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px", opacity: "0.3" }} />
+                      <img src={HackImg} alt="Hack Class" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px" }} />
                     </Hidden>
                     <Typography align="left">Feel free to brainstorm ideas for our Hackathon. Also dont forget to select any computer skills you possess.</Typography>
                     <Typography variant="h5" color="secondary">Get your Hack-on!</Typography>
@@ -296,10 +296,7 @@ class Register extends React.Component {
           </Grid>
         </Grid>
         <br />
-        <Link to="/Home" style={{ paddingRight: '10px', textDecoration: 'none' }}>Home</Link> | <Link to="/Baseline" style={{ paddingLeft: '10px', textDecoration: 'none' }} >Enrollment</Link>
-        <footer2>
-          © Copyright 2005-2019 NCCI Holdings, Inc. All Rights Reserved.
-        </footer2>
+        <Link to="/Home" style={{ paddingRight: '10px', textDecoration: 'none' }}>Home</Link> | <Link to="/Baseline" style={{ paddingLeft: '10px', textDecoration: 'none' }}>Enrollment Stats</Link>
 
         <Dialog open={this.state.dialogOpen} onClose={this.handleDialogClose}>
           <DialogTitle>

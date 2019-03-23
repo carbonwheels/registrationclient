@@ -33,16 +33,28 @@ class Baseline extends React.Component {
         };
     }
 
+    // componentDidMount() {
+    //     // fetch("http://40.121.12.189:8080/api/registrations")
+    //     fetch("http://172.31.2.55:8080/api/registrations", {
+    //         mode: 'no-cors',
+    //         method: "GET"})
+    //     .then(res => res.json())
+    //     .then(res => {
+    //         this.setState({ registrationData: res });
+    //         console.log(res)})
+    //     .catch(function (error) {console.log(error)});
+    // }
     componentDidMount() {
-        fetch("http://40.121.12.189:8080/api/registrations")
-            .then(res => res.json())
-            .then(response => {
-                this.setState({ registrationData: response });
-                console.log(response);
-            }).catch(function (error) {
-                console.log(error);
-            });
-    }
+        fetch("http://172.31.2.55:8080/api/registrations", {method: 'get', mode: 'no-cors'})
+        .then(res => res.json())
+        .then(response => {
+          this.setState({ registrationData: response });
+          console.log(response);
+        }).catch(function (error) {
+            debugger;
+          console.log(error);
+        });
+  }
 
     handleUserExpandClick = () => {
         this.setState(state => ({ expandUsers: !state.expandUsers }));
@@ -71,13 +83,13 @@ class Baseline extends React.Component {
     render() {
         return (
             <div>
-                <Typography variant="h3" color="primary">Enrollment Information</Typography>
+                <Typography variant="h3" color="primary">Enrollment Stats</Typography>
                 <Link to="/Home" style={{ paddingRight: '10px', textDecoration: 'none' }}>Home</Link> | <Link to="/Register" style={{ paddingLeft: '10px', textDecoration: 'none' }} >Register</Link><br /><br />
                 <Grid container spacing={24}>
                     <Grid item lg={3}>
                         <Card style={{ maxWidth: '450px', background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
-                                <img src={DeveloperImg} alt="Developer" />i
+                                <img src={DeveloperImg} alt="Developer" onClick={this.handleUserExpandClick}/>
                                 <Badge badgeContent={this.state.registrationData.length} color="secondary">
                                     <Typography gutterBottom variant="h5" color="primary"> Registered Users</Typography>
                                 </Badge>
@@ -107,7 +119,7 @@ class Baseline extends React.Component {
                     <Grid item lg={3}>
                         <Card style={{ maxWidth: '450px', background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
-                                <img src={TeamImg} alt="Team" />
+                                <img src={TeamImg} alt="Team" onClick={this.handleTeamExpandClick}/>
                                 <Badge badgeContent={_.filter(this.state.registrationData, f => f.team.name !== "").length} color="secondary">
                                     <Typography gutterBottom variant="h5" color="primary">Teams</Typography>
                                 </Badge>
@@ -138,7 +150,7 @@ class Baseline extends React.Component {
                     <Grid item lg={3}>
                         <Card style={{ maxWidth: '450px', background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
-                                <img src={IdeaImg} alt="Idea" />
+                                <img src={IdeaImg} alt="Idea" onClick={this.handleIdeaExpandClick}/>
                                 <Badge badgeContent={_.filter(this.state.registrationData, f => f.idea.title !== "").length} color="secondary">
                                     <Typography gutterBottom variant="h5" color="primary"> Ideas</Typography>
                                 </Badge>
@@ -168,9 +180,9 @@ class Baseline extends React.Component {
                     <Grid item lg={3}>
                         <Card style={{ maxWidth: '450px', background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
-                                <img src={SkillsImg} alt="Skills" />
+                                <img src={SkillsImg} alt="Skills" onClick={this.handleSkillExpandClick}/>
                                 <Badge badgeContent={this.getSkillData().length} color="secondary">
-                                    <Typography gutterBottom variant="h5" color="primary"> Skills</Typography>
+                                    <Typography gutterBottom variant="h5" color="primary">Skills</Typography>
                                 </Badge>
                                 <IconButton onClick={this.handleSkillExpandClick}>
                                     <ExpandMoreIcon />
